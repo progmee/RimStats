@@ -164,10 +164,14 @@ namespace RimStats {
             return "TEXT";
         }
 
+        private static bool isBound = false;
+
         /// <summary>
         /// Binds the appropriate native SQLite library based on the detected operating system.
         /// </summary>
         private static void BindBinaries() {
+            if (isBound) return;
+
             ModMetaData mod = ModLister.GetModWithIdentifier("progme.rimstats");
             if (mod == null) return;
 
@@ -195,6 +199,7 @@ namespace RimStats {
             // 3. Set the provider explicitly to use the library we just loaded
             // This tells SQLitePCL: "Don't search for it, I already loaded it into memory"
             raw.SetProvider(new SQLite3Provider_e_sqlite3());
+            isBound = true;
             
             // 4. Batteries_V2.Init() is often not needed if you set the provider manually,
             // but if you must call it, do it AFTER setting the provider.

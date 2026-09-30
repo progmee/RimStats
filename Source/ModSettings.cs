@@ -11,10 +11,10 @@ namespace RimStats {
         {
             base.ExposeData();
 
-            Scribe_Values.Look(ref statsRegisterIntervalDays, "statsRegisterIntervalDays");
-            Scribe_Values.Look(ref logEnabled, "logEnabled");
-            Scribe_Values.Look(ref registerEventsEnabled, "registerEventsEnabled");
-            Scribe_Values.Look(ref registerStatsEnabled, "regiterStatsEnabled");
+            Scribe_Values.Look(ref statsRegisterIntervalDays, "statsRegisterIntervalDays", 1f);
+            Scribe_Values.Look(ref logEnabled, "logEnabled", true);
+            Scribe_Values.Look(ref registerEventsEnabled, "registerEventsEnabled", true);
+            Scribe_Values.Look(ref registerStatsEnabled, "registerStatsEnabled", true);
         }
 
 

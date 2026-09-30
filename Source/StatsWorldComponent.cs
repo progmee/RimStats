@@ -12,7 +12,7 @@ namespace RimStats {
             base.WorldComponentTick();
 
             int invervalTicks = (int) (RimStatsMod.settings.statsRegisterIntervalDays * 60_000f);
-            if (Find.TickManager.TicksGame % invervalTicks == 0) RegisterData();
+            if (invervalTicks > 0 && Find.TickManager.TicksGame % invervalTicks == 0) RegisterData();
         }
 
         private void RegisterData() {
